@@ -1,0 +1,718 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>United Support Foundation</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700;9..144,900&family=Work+Sans:wght@400;500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink:rgb(99, 59, 59);
+    --sand:#f5e8c7;
+    --sand-dim:#EAE0C7;
+    --gold:#E3A73E;
+    --baobab:rgb(99, 59, 59);
+    --bissap:rgb(99, 59, 59);
+    --white:#FFFDF8;
+    --font-display:'Fraunces', serif;
+    --font-body:'Work Sans', sans-serif;
+    --font-mono:'Space Mono', monospace;
+  }
+  *{margin:0;padding:0;box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    font-family:var(--font-body);
+    background:var(--sand);
+    color:var(--ink);
+    overflow-x:hidden;
+  }
+  a{color:inherit;text-decoration:none;}
+  img,svg{display:block;max-width:100%;}
+  .wrap{max-width:1180px;margin:0 auto;padding:0 32px;}
+  ::selection{background:var(--gold);color:var(--ink);}
+
+  @media (prefers-reduced-motion: reduce){
+    *{animation-duration:0.01ms !important; animation-iteration-count:1 !important; transition-duration:0.01ms !important; scroll-behavior:auto !important;}
+  }
+
+  /* ---------- NAV ---------- */
+  header{
+    position:sticky;top:0;z-index:100;
+    background:rgba(244,236,216,0.9);
+    backdrop-filter:blur(10px);
+    border-bottom:1px solid rgba(27,42,74,0.1);
+  }
+  nav{
+    display:flex;align-items:center;justify-content:space-between;
+    padding:18px 32px;max-width:1180px;margin:0 auto;
+  }
+  .logo{
+    display:flex;align-items:center;gap:10px;
+    font-family:var(--font-display);font-weight:700;font-size:1.15rem;
+    letter-spacing:-0.01em;
+  }
+  .logo-mark{width:34px;height:34px;flex-shrink:0;}
+  .nav-links{display:flex;gap:34px;font-size:0.92rem;font-weight:500;}
+  .nav-links a{position:relative;padding:4px 0;}
+  .nav-links a::after{
+    content:"";position:absolute;left:0;bottom:0;width:0;height:2px;
+    background:var(--gold);transition:width 0.25s ease;
+  }
+  .nav-links a:hover::after{width:100%;}
+  .nav-cta{
+    background:var(--bissap);color:var(--white);
+    padding:10px 22px;border-radius:100px;font-weight:600;font-size:0.9rem;
+    transition:transform 0.2s ease, box-shadow 0.2s ease;
+  }
+  .nav-cta:hover{transform:translateY(-2px);box-shadow:0 8px 20px rgba(168,49,75,0.35);}
+  .burger{display:none;flex-direction:column;gap:5px;cursor:pointer;background:none;border:none;}
+  .burger span{width:24px;height:2px;background:var(--ink);}
+
+  /* ---------- HERO ---------- */
+  .hero{
+    position:relative;
+    padding:90px 0 60px;
+    overflow:hidden;
+  }
+  .hero-grid{
+    display:grid;grid-template-columns:1.05fr 0.95fr;
+    gap:40px;align-items:center;
+  }
+  .eyebrow{
+    font-family:var(--font-mono);font-size:0.78rem;letter-spacing:0.12em;
+    text-transform:uppercase;color:var(--baobab);
+    display:flex;align-items:center;gap:10px;margin-bottom:22px;
+  }
+  .eyebrow::before{content:"";width:26px;height:1px;background:var(--baobab);}
+  h1.hero-title{
+    font-family:var(--font-display);
+    font-size:clamp(2.4rem, 5vw, 4.1rem);
+    font-weight:600;line-height:1.04;letter-spacing:-0.02em;
+    margin-bottom:26px;
+  }
+  h1.hero-title em{
+    font-style:italic;font-weight:500;color:var(--bissap);
+  }
+  .hero-sub{
+    font-size:1.08rem;line-height:1.6;color:rgba(27,42,74,0.78);
+    max-width:480px;margin-bottom:34px;
+  }
+  .hero-actions{display:flex;gap:16px;flex-wrap:wrap;margin-bottom:44px;}
+  .btn{
+    display:inline-flex;align-items:center;gap:8px;
+    padding:15px 28px;border-radius:100px;font-weight:600;font-size:0.95rem;
+    transition:transform 0.2s ease, box-shadow 0.2s ease;
+    border:1.5px solid transparent;cursor:pointer;
+  }
+  .btn-primary{background:var(--bissap);color:var(--white);}
+  .btn-primary:hover{transform:translateY(-2px);box-shadow:0 10px 24px rgba(168,49,75,0.32);}
+  .btn-ghost{background:transparent;color:var(--ink);border-color:rgba(27,42,74,0.3);}
+  .btn-ghost:hover{border-color:var(--ink);background:rgba(27,42,74,0.05);}
+  .hero-meta{
+    display:flex;gap:30px;font-family:var(--font-mono);font-size:0.78rem;color:rgba(27,42,74,0.6);
+  }
+  .hero-meta div{display:flex;flex-direction:column;gap:4px;}
+  .hero-meta b{font-size:1.15rem;color:var(--ink);font-family:var(--font-body);font-weight:700;}
+
+  .baobab-wrap{position:relative;display:flex;justify-content:center;align-items:center;}
+  .baobab-wrap svg{width:100%;max-width:420px;height:auto;}
+  .baobab-glow{
+    position:absolute;width:340px;height:340px;border-radius:50%;
+    background:radial-gradient(circle, rgba(227,167,62,0.35) 0%, rgba(227,167,62,0) 70%);
+    z-index:0;
+  }
+  .baobab-wrap svg{position:relative;z-index:1;}
+
+  /* draw-in animation for baobab lines */
+  .draw{
+    stroke-dasharray:1200;
+    stroke-dashoffset:1200;
+    animation:draw 2.6s ease forwards;
+  }
+  @keyframes draw{to{stroke-dashoffset:0;}}
+  .node{opacity:0;animation:pop 0.5s ease forwards;}
+  @keyframes pop{to{opacity:1;transform:scale(1);}}
+
+  /* ---------- SECTION SHELL ---------- */
+  section{padding:100px 0;}
+  .section-head{max-width:640px;margin-bottom:56px;}
+  .section-eyebrow{
+    font-family:var(--font-mono);font-size:0.78rem;letter-spacing:0.1em;
+    text-transform:uppercase;color:var(--bissap);margin-bottom:14px;display:block;
+  }
+  h2{
+    font-family:var(--font-display);font-weight:600;
+    font-size:clamp(1.8rem, 3.2vw, 2.6rem);letter-spacing:-0.02em;line-height:1.1;
+  }
+  .section-desc{margin-top:16px;color:rgba(27,42,74,0.72);font-size:1.02rem;line-height:1.65;}
+
+  .reveal{opacity:0;transform:translateY(28px);transition:opacity 0.7s ease, transform 0.7s ease;}
+  .reveal.in{opacity:1;transform:translateY(0);}
+
+  /* ---------- STATS ---------- */
+  .stats{background:var(--ink);color:var(--sand);}
+  .stats .wrap{padding-top:0;padding-bottom:0;}
+  .stats-grid{
+    display:grid;grid-template-columns:repeat(4,1fr);gap:1px;
+    background:rgba(244,236,216,0.15);
+    border:1px solid rgba(244,236,216,0.15);
+  }
+  .stat-card{background:var(--ink);padding:40px 28px;}
+  .stat-num{
+    font-family:var(--font-mono);font-size:2.5rem;font-weight:700;color:var(--gold);
+    display:block;margin-bottom:10px;
+  }
+  .stat-label{font-size:0.88rem;color:rgba(244,236,216,0.7);line-height:1.4;}
+
+  /* ---------- PROGRAMS ---------- */
+  .programs-grid{
+    display:grid;grid-template-columns:repeat(2,1fr);gap:24px;
+  }
+  .program-card{
+    background:var(--white);border:1px solid rgba(27,42,74,0.1);
+    border-radius:18px;padding:36px;
+    transition:transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+    position:relative;overflow:hidden;
+  }
+  .program-card:hover{
+    transform:translateY(-6px);
+    box-shadow:0 20px 40px rgba(27,42,74,0.1);
+    border-color:transparent;
+  }
+  .program-card .icon-badge{
+    width:54px;height:54px;border-radius:14px;
+    display:flex;align-items:center;justify-content:center;
+    margin-bottom:22px;
+  }
+  .program-card .icon-badge svg{width:26px;height:26px;}
+  .bg-gold{background:rgba(227,167,62,0.18);}
+  .bg-baobab{background:rgba(62,102,83,0.16);}
+  .bg-bissap{background:rgba(168,49,75,0.14);}
+  .bg-ink{background:rgba(27,42,74,0.1);}
+  .program-card h3{
+    font-family:var(--font-display);font-size:1.35rem;font-weight:600;margin-bottom:12px;
+  }
+  .program-card p{color:rgba(27,42,74,0.72);font-size:0.96rem;line-height:1.6;margin-bottom:18px;}
+  .program-tag{
+    font-family:var(--font-mono);font-size:0.75rem;color:var(--ink);
+    background:var(--sand-dim);padding:5px 12px;border-radius:100px;
+    display:inline-block;
+  }
+
+  /* ---------- PROCESS ---------- */
+  .process{background:var(--baobab);color:var(--sand);}
+  .process h2, .process .section-desc{color:var(--sand);}
+  .process .section-desc{color:rgba(244,236,216,0.8);}
+  .process-steps{display:grid;grid-template-columns:repeat(3,1fr);gap:30px;margin-top:20px;}
+  .process-step{border-top:2px solid rgba(244,236,216,0.35);padding-top:24px;}
+  .process-num{
+    font-family:var(--font-mono);font-size:0.85rem;color:var(--gold);margin-bottom:14px;display:block;
+  }
+  .process-step h3{font-family:var(--font-display);font-size:1.3rem;font-weight:600;margin-bottom:10px;}
+  .process-step p{color:rgba(244,236,216,0.78);font-size:0.95rem;line-height:1.6;}
+ 
+* ---------- GALLERY (scrolling images) ---------- */
+.gallery{padding-top:0;overflow:hidden;}
+  .gallery-head{max-width:640px;margin:0 auto 44px;padding:0 32px;}
+  .marquee-viewport{
+    width:100%;overflow:hidden;
+    -webkit-mask-image:linear-gradient(90deg, transparent 0, #000 6%, #000 94%, transparent 100%);
+    mask-image:linear-gradient(90deg, transparent 0, #000 6%, #000 94%, transparent 100%);
+  }
+  .marquee-track{
+    display:flex;gap:20px;width:max-content;
+    animation:marquee 30s linear infinite;
+  }
+  .marquee-track:hover{animation-play-state:paused;}
+  @keyframes marquee{
+    from{transform:translateX(0);}
+    to{transform:translateX(-50%);}
+  }
+  .marquee-card{
+    position:relative;width:280px;height:340px;flex-shrink:0;
+    border-radius:18px;overflow:hidden;border:1px solid rgba(27,42,74,0.1);
+    background:var(--sand-dim);
+  }
+  .marquee-card img{
+    width:100%;height:100%;object-fit:cover;display:block;
+  }
+  .marquee-card figcaption{
+    position:absolute;left:0;right:0;bottom:0;
+    padding:20px 18px 16px;
+    background:linear-gradient(0deg, rgba(27,42,74,0.85) 0%, rgba(27,42,74,0) 100%);
+    color:var(--white);font-size:0.85rem;font-weight:600;
+  }
+  .marquee-track.reverse{animation-direction:reverse;animation: animation 30s;}
+
+  /* ---------- GET INVOLVED ---------- */
+  .involved-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;}
+  .involve-card{
+    padding:36px;border-radius:18px;color:var(--white);
+    display:flex;flex-direction:column;justify-content:space-between;min-height:280px;
+    transition:transform 0.3s ease;
+  }
+  .involve-card:hover{transform:translateY(-6px);}
+  .involve-card h3{font-family:var(--font-display);font-size:1.5rem;font-weight:600;margin-bottom:12px;}
+  .involve-card p{font-size:0.95rem;line-height:1.6;opacity:0.9;margin-bottom:24px;}
+  .involve-card .btn{align-self:flex-start;}
+  .involve-1{background:var(--bissap);}
+  .involve-2{background:var(--baobab);}
+  .involve-3{background:var(--ink);}
+  .involve-card .btn-ghost{border-color:rgba(255,255,255,0.5);color:var(--white);}
+  .involve-card .btn-ghost:hover{background:rgba(255,255,255,0.15);border-color:var(--white);}
+
+  /* ---------- CONTACT ---------- */
+  .contact-shell{
+    display:grid;grid-template-columns:1fr 1fr;gap:60px;
+    background:var(--ink);color:var(--sand);border-radius:24px;padding:60px;
+  }
+  .contact-shell h2{color:var(--sand);}
+  .contact-info{display:flex;flex-direction:column;gap:28px;margin-top:30px;}
+  .contact-item{display:flex;gap:16px;align-items:flex-start;}
+  .contact-item svg{width:20px;height:20px;flex-shrink:0;margin-top:3px;color:var(--gold);}
+  .contact-item b{display:block;font-size:0.95rem;margin-bottom:4px;}
+  .contact-item span{font-size:0.9rem;color:rgba(244,236,216,0.7);}
+  form{display:flex;flex-direction:column;gap:16px;}
+  .field-row{display:grid;grid-template-columns:1fr 1fr;gap:16px;}
+  label{font-size:0.82rem;font-family:var(--font-mono);color:rgba(244,236,216,0.7);margin-bottom:6px;display:block;}
+  input, textarea, select{
+    width:100%;padding:13px 16px;border-radius:10px;border:1px solid rgba(244,236,216,0.25);
+    background:rgba(244,236,216,0.06);color:var(--sand);font-family:var(--font-body);font-size:0.95rem;
+    outline:none;transition:border-color 0.2s ease, background 0.2s ease;
+  }
+  input::placeholder, textarea::placeholder{color:rgba(244,236,216,0.4);}
+  input:focus, textarea:focus, select:focus{border-color:var(--gold);background:rgba(244,236,216,0.1);}
+  textarea{resize:vertical;min-height:100px;}
+  form .btn-primary{margin-top:6px;justify-content:center;}
+  select option{color:var(--ink);}
+
+  /* ---------- FOOTER ---------- */
+  footer{padding:60px 0 32px;}
+  .footer-grid{
+    display:grid;grid-template-columns:1.4fr 1fr 1fr 1fr;gap:40px;
+    padding-bottom:40px;border-bottom:1px solid rgba(27,42,74,0.12);
+  }
+  .footer-brand .logo{margin-bottom:14px;}
+  .footer-brand p{font-size:0.9rem;color:rgba(27,42,74,0.65);max-width:280px;line-height:1.6;}
+  .footer-col h4{font-size:0.82rem;font-family:var(--font-mono);text-transform:uppercase;letter-spacing:0.08em;margin-bottom:16px;color:rgba(27,42,74,0.55);}
+  .footer-col a{display:block;font-size:0.92rem;margin-bottom:10px;color:rgba(27,42,74,0.78);transition:color 0.2s ease;}
+  .footer-col a:hover{color:var(--bissap);}
+  .footer-bottom{
+    display:flex;justify-content:space-between;align-items:center;padding-top:28px;
+    font-size:0.82rem;color:rgba(27,42,74,0.55);flex-wrap:wrap;gap:12px;
+  }
+  .socials{display:flex;gap:14px;}
+  .socials a{
+    width:36px;height:36px;border-radius:50%;border:1px solid rgba(27,42,74,0.2);
+    display:flex;align-items:center;justify-content:center;transition:all 0.2s ease;
+  }
+  .socials a:hover{background:var(--ink);color:var(--sand);border-color:var(--ink);}
+  .socials svg{width:16px;height:16px;}
+
+  /* ---------- RESPONSIVE ---------- */
+  @media (max-width:920px){
+    .nav-links{display:none;}
+    .burger{display:flex;}
+    .hero-grid{grid-template-columns:1fr;}
+    .baobab-wrap{order:-1;margin-bottom:20px;}
+    .stats-grid{grid-template-columns:repeat(2,1fr);}
+    .programs-grid{grid-template-columns:1fr;}
+    .process-steps{grid-template-columns:1fr;}
+    .story{grid-template-columns:1fr;padding:36px;}
+    .involved-grid{grid-template-columns:1fr;}
+    .contact-shell{grid-template-columns:1fr;padding:36px;}
+    .field-row{grid-template-columns:1fr;}
+    .footer-grid{grid-template-columns:1fr 1fr;}
+  }
+  @media (max-width:520px){
+    .footer-grid{grid-template-columns:1fr;}
+    .hero-meta{flex-wrap:wrap;row-gap:16px;}
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <nav>
+    <div class="logo">
+      <svg class="logo-mark" viewBox="0 0 40 40" fill="none">
+        <circle cx="20" cy="20" r="19" stroke="#1B2A4A" stroke-width="1.5"/>
+        <path d="M20 8C16 14 14 16 8 20C14 16 16 18 20 24C16 18 18 16 24 12C18 16 16 14 20 8Z" fill="#E3A73E"/>
+        <circle cx="20" cy="20" r="3" fill="#A8314B"/>
+      </svg>
+      United Support Foundation
+    </div>
+    <div class="nav-links">
+      <a href="#mission">Mission</a>
+      <a href="#programmes">objectifs</a>
+      <a href="#impact">reglement interieur et aide</a>
+      <a href="#rejoindre">Nous rejoindre</a>
+      <a href="#contact">Contact</a>
+    </div>
+    <a href="#contact" class="nav-cta">Faire un don</a>
+    <button class="burger" id="burgerBtn" aria-label="Ouvrir le menu"><span></span><span></span><span></span></button>
+  </nav>
+</header>
+
+<main>
+  <!-- HERO -->
+  <section class="hero">
+    <div class="wrap hero-grid">
+      <div>
+        <span class="eyebrow"> united support Fondation — Dakar, Sénégal <em>MBOLLO ANDE SOUKEULI REWMI</em></span>
+        <h1 class="hero-title">united support foundation:<em> soutient, espoir, action</em></h1>
+        <p class="hero-sub">United Support Foundation, une association creer le 14 fevrier 2025. avec un objectif clair: apporter du soutien aux plus demunis. nous croyons que chaque geste compte et que la solidarite peut changer des vies.</p>
+        <div class="hero-actions">
+          <a href="#contact" class="btn btn-primary">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
+            Faire un don 
+          </a>
+          <a href="#rejoindre" class="btn btn-ghost">Devenir bénévole</a>
+        </div>
+        <div class="hero-meta">
+          <div><b>10</b>Quartiers de Dakar soutenus</div>
+          <div><b>50+</b>Bénévoles actifs</div>
+          <div><b>2025</b>Année de fondation</div>
+        </div>
+      </div>
+
+      <div class="images">
+        <img src="logo2 usf.jpg">
+    </div>
+  </section>
+
+  <!-- STATS -->
+  <section class="stats" id="mission">
+<h2 class="hero-title">--notre mission principale:</h2><br><br>
+    <div class="wrap">
+      <div class="stats-grid">
+        <div class="stat-card"><span class="stat-label">notre engagement repose sur trois piliers fondamentaux:</span></div>
+        <div class="stat-card"><span class="stat-label">Soutient: Aider ceux qui ont le plus besoins.</span></div>
+        <div class="stat-card"><span class="stat-label">Espoir: Redonner le sourire et L'espoir aux demunis. </span></div>
+        <div class="stat-card"><span class="stat-label">Action: Mettre en place des initiatives concretes et solidaires.</span></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PROGRAMS -->
+  <section id="programmes">
+    <div class="wrap">
+      <div class="section-head reveal">
+        <span class="section-eyebrow">dimbeuli new di doole yi nguir yallah rek takh</span>
+        <h2>nos objectifs essentiels dans chaque couverture </h2>
+        <p class="section-desc">Chaque programme répond à un besoin identifié directement auprès des familles que nous accompagnons, en partenariat avec les leaders du pays.</p>
+      </div>
+      <div class="programs-grid">
+        <div class="program-card reveal">
+          <div class="icon-badge bg-gold">
+            <svg viewBox="0 0 24 24" fill="none" stroke="#E3A73E" stroke-width="2"><path d="M22 10L12 5 2 10l10 5 10-5z"/><path d="M6 12v5c0 1 3 3 6 3s6-2 6-3v-5"/></svg>
+          </div>
+          <h3>Éducation</h3>
+          <p>Fournitures scolaires,bourses sociales pour les élèves des familles à revenus modestes, du primaire au lycée.</p>
+          <span class="program-tag">620 enfants suivis</span>
+        </div>
+        <div class="program-card reveal">
+          <div class="icon-badge bg-baobab">
+            <svg viewBox="0 0 24 24" fill="none" stroke="#3E6653" stroke-width="2"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
+          </div>
+          <h3>Santé communautaire</h3>
+          <p>Consultations gratuites, campagnes de sensibilisation et distribution de kits sanitaires dans les quartiers les plus éloignés des centres de santé.</p>
+          <span class="program-tag">10 cliniques mobiles / mois</span>
+        </div>
+        <div class="program-card reveal">
+          <div class="icon-badge bg-bissap">
+            <svg viewBox="0 0 24 24" fill="none" stroke="#A8314B" stroke-width="2"><path d="M3 3h18v18H3z"/><path d="M3 9h18M9 21V9"/></svg>
+          </div>
+          <h3>aide alimentaire</h3>
+          <p>Distribution de kits lors des evenements religieux aux senrgal comme tabaski, korite, ramadan, etc...</p>
+          <span class="program-tag">2005 repas / semaine</span>
+        </div>
+        <div class="program-card reveal">
+          <div class="icon-badge bg-ink">
+            <svg viewBox="0 0 24 24" fill="none" stroke="#1B2A4A" stroke-width="2"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4 4-6 8-6s8 2 8 6"/></svg>
+          </div>
+          <h3>protections des femmes</h3>
+          <p>sensibilisation contres les danger dont les femmes senegalaises sont exposer.</p>
+          <span class="program-tag">75 femmes formées / an</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PROCESS -->
+  <section class="process" id="impact">
+    <div class="wrap">
+      <div class="section-head reveal">
+        <span class="section-eyebrow" style="color:#E3A73E;">Reglement interieur</span>
+        <h2>voici une petite appercue de notre reglement interieur</h2>
+        <p class="section-desc">Pour avoir un apprecue de notre reglement interieur et connaitre le mode fonctionnement de l'associassion cliquer ci dessous sur reglement interieur.<br> 
+            <div class="section">
+            <a href="RI USF.pdf"> (REGLEMENT INTERIEUR USF)</a></p>
+            </div>
+      </div>
+      <div class="process-steps">
+        <div class="process-step reveal">
+          <span class="process-num">01 — Faire un don:</span>
+          <h3>Identifier les besoins</h3>
+          <p>Nos équipes locales rencontrent les familles et les chefs de quartier pour comprendre les priorités réelles, avant toute action( argent, denreees alimentaires . vetements...).</p>
+        </div>
+        <div class="process-step reveal">
+          <span class="process-num">02 — devenir benevole:</span>
+          <h3>Rejoindre notre communauter</h3>
+          <p>Bénévoles, donateurs et partenaires institutionnels sont mis en réseau pour répondre concrètement à chaque besoin identifié c'est a dire rejoindre notre equipe et agissez avec nous !</p>
+        </div>
+        <div class="process-step reveal">
+          <span class="process-num">03 — partager notre message:</span>
+          <h3>visibliter pour plus d'action</h3>
+          <p>plus nous sommes visibles, plus nous pouvons aider la population senegalaise.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- GALLERY (scrolling images) -->
+  <section class="gallery" id="galerie">
+    <div class="gallery-head reveal wrap">
+      <span class="section-eyebrow">Sur le terrain</span>
+      <h2>Notre impact en images</h2>
+      <p class="section-desc">Un aperçu de nos actions dans les quartiers de Dakar et environ — distributions de kits, couverture medicales .</p>
+    </div>
+    <div class="marquee-viewport reveal">
+      <div class="marquee-track">
+        <figure class="marquee-card"aria-hidden="true"><img src="usf1.jpg" alt=""><figcaption></figcaption></figure>
+        <figure class="marquee-card"aria-hidden="true"><img src="usf2.jpg" alt=""><figcaption></figcaption></figure>
+        <figure class="marquee-card"aria-hidden="true"><img src="usf4.jpg" alt=""><figcaption></figcaption></figure>
+        <figure class="marquee-card"aria-hidden="true"><img src="usf5.jpg" alt=""><figcaption></figcaption></figure>
+        <figure class="marquee-card"aria-hidden="true"><img src="usf6.jpg" alt=""><figcaption></figcaption></figure>
+        <figure class="marquee-card"aria-hidden="true"><img src="usf7.jpg" alt=""><figcaption></figcaption></figure>
+        <figure class="marquee-card"aria-hidden="true"><img src="usf8.jpg" alt=""><figcaption></figcaption></figure>
+        <figure class="marquee-card"aria-hidden="true"><img src="usf9.jpg" alt=""><figcaption></figcaption></figure>
+        <figure class="marquee-card"aria-hidden="true"><img src="usf10.jpg" alt=""><figcaption></figcaption></figure>
+        <figure class="marquee-card"aria-hidden="true"><img src="usf11.jpg" alt=""><figcaption></figcaption></figure>
+        <figure class="marquee-card" aria-hidden="true"><img src="usf12.jpg" alt=""><figcaption></figcaption></figure>
+        <figure class="marquee-card" aria-hidden="true"><img src="usf13.jpg" alt=""><figcaption></figcaption></figure>
+        <figure class="marquee-card" aria-hidden="true"><img src="usf14.jpg" alt=""><figcaption></figcaption></figure>
+        <figure class="marquee-card" aria-hidden="true"><img src="usf15.jpg" alt=""><figcaption></figcaption></figure>
+        <figure class="marquee-card" aria-hidden="true"><img src="usf16.jpg" alt=""><figcaption></figcaption></figure>
+        </div>
+        <div class="marquee-track">
+          <figure class="marquee-card" aria-hidden="true"><img src="usf17.jpg" alt=""><figcaption></figcaption></figure>
+        <figure class="marquee-card" aria-hidden="true"><img src="usf18.jpg" alt=""><figcaption></figcaption></figure>
+        <figure class="marquee-card" aria-hidden="true"><img src="usf19.jpg" alt=""><figcaption></figcaption></figure>
+        <figure class="marquee-card" aria-hidden="true"><img src="usf20.jpg" alt=""><figcaption></figcaption></figure>
+        <figure class="marquee-card" aria-hidden="true"><img src="usf21.jpg" alt=""><figcaption></figcaption></figure>
+        <figure class="marquee-card" aria-hidden="true"><img src="usf22.jpg" alt=""><figcaption></figcaption></figure>
+        <figure class="marquee-card" aria-hidden="true"><img src="usf23.jpg" alt=""><figcaption></figcaption></figure>
+        <figure class="marquee-card" aria-hidden="true"><img src="usf24.jpg" alt=""><figcaption></figcaption></figure>
+        <figure class="marquee-card"aria-hidden="true"><img src="usf25.jpg" alt=""><figcaption></figcaption></figure>
+        <figure class="marquee-card"aria-hidden="true"><img src="usf26.jpg" alt=""><figcaption></figcaption></figure>
+        <figure class="marquee-card"aria-hidden="true"><img src="usf27.jpg" alt=""><figcaption></figcaption></figure>
+        <figure class="marquee-card"aria-hidden="true"><img src="usf28.jpg" alt=""><figcaption></figcaption></figure>
+        <figure class="marquee-card"aria-hidden="true"><img src="usf29.jpg" alt=""><figcaption></figcaption></figure>
+        <figure class="marquee-card"aria-hidden="true"><img src="usf30.jpg" alt=""><figcaption></figcaption></figure>
+        <figure class="marquee-card" aria-hidden="true"><img src="usf31.jpg" alt=""><figcaption></figcaption></figure>
+        </div>
+        <div class="marquee-track">
+        <figure class="marquee-card"aria-hidden="true"><img src="usf32.jpg" alt=""><figcaption></figcaption></figure>
+        <figure class="marquee-card"aria-hidden="true"><img src="usf33.jpg" alt=""><figcaption></figcaption></figure>
+        <figure class="marquee-card"aria-hidden="true"><img src="usf34.jpg" alt=""><figcaption></figcaption></figure>
+        <figure class="marquee-card" aria-hidden="true"><img src="usf35.jpg" alt=""><figcaption></figcaption></figure>
+        <figure class="marquee-card"aria-hidden="true"><img src="usf36.jpg" alt=""><figcaption></figcaption></figure>
+        <figure class="marquee-card"aria-hidden="true"><img src="usf37.jpg" alt=""><figcaption></figcaption></figure>
+        <figure class="marquee-card"aria-hidden="true"><img src="usf38.jpg" alt=""><figcaption></figcaption></figure>
+        <figure class="marquee-card" aria-hidden="true"><img src="usf39.jpg" alt=""><figcaption></figcaption></figure>
+        <figure class="marquee-card" aria-hidden="true"><img src="usf40.jpg" alt=""><figcaption></figcaption></figure>
+        <figure class="marquee-card" aria-hidden="true"><img src="usf41.jpg" alt=""><figcaption></figcaption></figure>
+        <figure class="marquee-card" aria-hidden="true"><img src="usf42.jpg" alt=""><figcaption></figcaption></figure>
+        <figure class="marquee-card"aria-hidden="true"><img src="usf43.jpg" alt=""><figcaption></figcaption></figure>
+        <figure class="marquee-card"aria-hidden="true"><img src="usf44.jpg" alt=""><figcaption></figcaption></figure>
+        <figure class="marquee-card"aria-hidden="true"><img src="usf45.jpg" alt=""><figcaption></figcaption></figure>
+        <figure class="marquee-card"aria-hidden="true"><img src="usf46.jpg" alt=""><figcaption></figcaption></figure>
+        <figure class="marquee-card"aria-hidden="true"><img src="usf47.jpg" alt=""><figcaption></figcaption></figure>
+        <figure class="marquee-card"aria-hidden="true"><img src="usf48.jpg" alt=""><figcaption></figcaption></figure>
+        </div>
+        <div class="marquee-track">
+        <figure class="marquee-card"aria-hidden="true"><img src="usf13.jpg" alt=""><figcaption></figcaption></figure>
+        <figure class="marquee-card"aria-hidden="true"><img src="usf14.jpg" alt=""><figcaption></figcaption></figure>
+        <figure class="marquee-card"aria-hidden="true"><img src="usf15.jpg" alt=""><figcaption></figcaption></figure>
+        <figure class="marquee-card" aria-hidden="true"><img src="usf16.jpg" alt=""><figcaption></figcaption></figure>
+        <figure class="marquee-card"aria-hidden="true"><img src="usf29.jpg" alt=""><figcaption></figcaption></figure>
+        <figure class="marquee-card"aria-hidden="true"><img src="usf30.jpg" alt=""><figcaption></figcaption></figure>
+        <figure class="marquee-card"aria-hidden="true"><img src="usf31.jpg" alt=""><figcaption></figcaption></figure>
+        <figure class="marquee-card"aria-hidden="true"><img src="usf46.jpg" alt=""><figcaption></figcaption></figure>
+        <figure class="marquee-card"aria-hidden="true"><img src="usf47.jpg" alt=""><figcaption></figcaption></figure>
+        <figure class="marquee-card" aria-hidden="true"><img src="usf48.jpg" alt=""><figcaption></figcaption></figure>
+        <figure class="marquee-card"aria-hidden="true"><img src="usf29.jpg" alt=""><figcaption></figcaption></figure>
+        </div>
+    </div>
+  </section>
+  <!-- GET INVOLVED -->
+  <section id="rejoindre">
+    <div class="wrap">
+      <div class="section-head reveal">
+        <span class="section-eyebrow">Nous rejoindre</span>
+        <h2>Trois façons de soutenir la communauté</h2>
+      </div>
+      <div class="involved-grid">
+        <div class="involve-card involve-1 reveal">
+          <div>
+            <h3>Faire un don</h3>
+            <p>Chaque don, même modeste, finance directement un repas, une fourniture scolaire ou une consultation médicale. Pour faire un don veiller cliquer sur le boutton ci-dessous et contacter nous sur ses numeros.</p>
+          </div>
+          <a href="#contact" class="btn btn-ghost">Faire un don →</a>
+        </div>
+        <div class="involve-card involve-2 reveal">
+          <div>
+            <h3>Devenir bénévole</h3>
+            <p>Rejoignez nos équipes sur le terrain à Dakar et environ et donnez de votre temps a chaque couverture sociale.cliquer ci-dessous et contacter nous</p>
+          </div>
+          <a href="#contact" class="btn btn-ghost"> nous contacter →</a>
+        </div>
+        <div class="involve-card involve-3 reveal">
+          <div>
+            <h3>Devenir partenaire</h3>
+            <p>Entreprises et institutions peuvent soutenir un programme complet ou parrainer un quartier sur l'année. contacter nous en cliquant sur le boutton suivant</p>
+          </div>
+          <a href="#contact" class="btn btn-ghost">Nous contacter →</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section id="contact">
+    <div class="wrap">
+      <div class="contact-shell reveal">
+        <div>
+          <span class="section-eyebrow" style="color:#E3A73E;">Contact</span>
+          <h2>Parlons de votre engagement</h2>
+          <div class="contact-info">
+            <div class="contact-item">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+              <div><b>Adresse</b><span>rufisque , Dakar, Sénégal</span></div>
+            </div>
+            <div class="contact-item">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.68 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.32 1.85.55 2.81.68A2 2 0 0 1 22 16.92z"/></svg>
+              <div><b>Téléphone</b><span>+221 77 161 76 48 / 77 439 55 25</span></div>
+            </div>
+            <div class="contact-item">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16v16H4z"/><path d="M22 6l-10 7L2 6"/></svg>
+              <div><b>E-mail</b><span>us.fondation@gmail.com</span></div>
+            </div>
+            <div class="contact-item">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16v16H4z"/><path d="M22 6l-10 7L2 6"/></svg>
+              <div><b>numero orange money:</b><span>+221 77 555 42 44</span></div>
+              <div class="contact-item">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16v16H4z"/><path d="M22 6l-10 7L2 6"/></svg>
+              <div><b>numero wave:</b><span>+221 77 118 31 04</span></div>
+            </div>
+            </div>
+          </div>
+        </div>
+        <form onsubmit="event.preventDefault(); this.reset(); document.getElementById('formMsg').style.display='block';">
+          <p id="formMsg" style="display:none;font-size:0.85rem;color:#E3A73E;font-family:var(--font-mono);">Merci ! Votre message a bien été enregistré (démo).</p>
+        </form>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <div class="logo">
+          <svg class="logo-mark" viewBox="0 0 40 40" fill="none">
+            <circle cx="20" cy="20" r="19" stroke="#1B2A4A" stroke-width="1.5"/>
+            <path d="M20 8C16 14 14 16 8 20C14 16 16 18 20 24C16 18 18 16 24 12C18 16 16 14 20 8Z" fill="#E3A73E"/>
+            <circle cx="20" cy="20" r="3" fill="#A8314B"/>
+          </svg>
+          United Support Foundation
+        </div>
+        <p>Une fondation communautaire basée à Dakar, dédiée à l'éducation, la santé et la sécurité alimentaire des familles sénégalaises.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Navigation</h4>
+        <a href="#mission">Mission</a>
+        <a href="#programmes">Programmes</a>
+        <a href="#impact">Impact</a>
+        <a href="#rejoindre">Nous rejoindre</a>
+      </div>
+      <div class="footer-col">
+        <h4>Programmes</h4>
+        <a href="#programmes">Éducation</a>
+        <a href="#programmes">Santé</a>
+        <a href="#programmes">Sécurité alimentaire</a>
+        <a href="#programmes">Femmes</a>
+      </div>
+      <div class="footer-col">
+        <h4>Légal</h4>
+        <a href="#">Rapport annuel</a>
+        <a href="#">Politique de confidentialité</a>
+        <a href="#contact">Contact</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2026 United Support Foundation. Tous droits réservés.</span>
+      <div class="socials">
+        <a href="#" aria-label="Facebook"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M22 12a10 10 0 1 0-11.6 9.9v-7H7.9V12h2.5V9.8c0-2.5 1.5-3.9 3.8-3.9 1.1 0 2.2.2 2.2.2v2.5h-1.3c-1.2 0-1.6.8-1.6 1.6V12h2.8l-.4 2.9h-2.4v7A10 10 0 0 0 22 12z"/></svg></a>
+        <a href="#" aria-label="Instagram"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1"/></svg></a>
+        <a href="#" aria-label="WhatsApp"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a10 10 0 0 0-8.5 15.3L2 22l4.8-1.5A10 10 0 1 0 12 2zm0 18a8 8 0 0 1-4.1-1.1l-.3-.2-3 .9.9-2.9-.2-.3A8 8 0 1 1 12 20z"/></svg></a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script>
+  // burger toggle (simple stacked nav)
+  const burger = document.getElementById('burgerBtn');
+  const navLinks = document.querySelector('.nav-links');
+  burger.addEventListener('click', () => {
+    const open = navLinks.style.display === 'flex';
+    navLinks.style.display = open ? 'none' : 'flex';
+    navLinks.style.flexDirection = 'column';
+    navLinks.style.position = 'absolute';
+    navLinks.style.top = '68px';
+    navLinks.style.left = '0';
+    navLinks.style.right = '0';
+    navLinks.style.background = '#F4ECD8';
+    navLinks.style.padding = '20px 32px';
+    navLinks.style.gap = '18px';
+    navLinks.style.borderBottom = '1px solid rgba(27,42,74,0.1)';
+  });
+
+  // scroll reveal
+  const revealEls = document.querySelectorAll('.reveal');
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('in'); });
+  }, { threshold: 0.15 });
+  revealEls.forEach(el => io.observe(el));
+
+  // count-up stats
+  const counters = document.querySelectorAll('.stat-num');
+  const countIO = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        const el = entry.target;
+        const target = parseInt(el.dataset.count, 10);
+        let start = 0;
+        const duration = 1400;
+        const startTime = performance.now();
+        function step(now){
+          const progress = Math.min((now - startTime) / duration, 1);
+          const eased = 1 - Math.pow(1 - progress, 3);
+          el.textContent = Math.floor(eased * target);
+          if (progress < 1) requestAnimationFrame(step);
+          else el.textContent = target;
+        }
+        requestAnimationFrame(step);
+        countIO.unobserve(el);
+      }
+    });
+  }, { threshold: 0.5 });
+  counters.forEach(c => countIO.observe(c));
+</script>
+
+</body>
+</html>
