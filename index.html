@@ -64,7 +64,7 @@
   .nav-cta{
     background:var(--bissap);color:var(--white);
     padding:10px 22px;border-radius:100px;font-weight:600;font-size:0.9rem;
-    transition:transform 0.2s ease, box-shadow 0.2s ease;
+    transition:transform 0.2s ease, box-shadow 0.2s ease;margin-left:36px;
   }
   .nav-cta:hover{transform:translateY(-2px);box-shadow:0 8px 20px rgba(168,49,75,0.35);}
   .burger{display:none;flex-direction:column;gap:5px;cursor:pointer;background:none;border:none;}
@@ -337,17 +337,13 @@
 <header>
   <nav>
     <div class="logo">
-      <svg class="logo-mark" viewBox="0 0 40 40" fill="none">
-        <circle cx="20" cy="20" r="19" stroke="#1B2A4A" stroke-width="1.5"/>
-        <path d="M20 8C16 14 14 16 8 20C14 16 16 18 20 24C16 18 18 16 24 12C18 16 16 14 20 8Z" fill="#E3A73E"/>
-        <circle cx="20" cy="20" r="3" fill="#A8314B"/>
-      </svg>
+     <img class="logo-mark" src="logo2 usf.jpg" alt="Logo United Support Foundation">
       United Support Foundation
     </div>
     <div class="nav-links">
       <a href="#mission">Mission</a>
       <a href="#programmes">objectifs</a>
-      <a href="#impact">reglement interieur et aide</a>
+      <a href="#impact">reglement interieur</a>
       <a href="#rejoindre">Nous rejoindre</a>
       <a href="#contact">Contact</a>
     </div>
@@ -361,9 +357,9 @@
   <section class="hero">
     <div class="wrap hero-grid">
       <div>
-        <span class="eyebrow"> united support Fondation — Dakar, Sénégal <em>MBOLLO ANDE DIAPALE NEW DI DOLE YI</em></span>
-        <h1 class="hero-title">united support foundation:<em> soutient, espoir, action</em></h1>
-        <p class="hero-sub">United Support Foundation, une association créée le 14 février 2025, avec un objectif clair : apporter du soutien aux plus démunis. Nous croyons que chaque geste compte et que la solidarité peut changer des vies.</p>
+        <span class="eyebrow"> united support Fondation—rufisque,Dakar, Sénégal <em>MBOLLO ANDE DIAPALE NEW DI DOLE YI</em></span>
+        <h1 class="hero-title"><strong>SUPPORT FOUNDATION </strong>:<em> Soutient, Espoir, Ation</em></h1>
+        <p class="hero-sub">United Support Foundation, une association crée le 14 février 2025, avec un objectif clair : apporter du soutien aux plus démunis. <br>Nous croyons que chaque geste compte et que la solidarité peut changer des vies.</p>
         <div class="hero-actions">
           <a href="#contact" class="btn btn-primary">
             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
@@ -376,20 +372,17 @@
           <div><b>2025</b>Année de fondation</div>
         </div>
       </div>
-      <div class="images">
-        <img src="logo2 usf.jpg">
-    </div>
   </section>
 
   <!-- STATS -->
   <section class="stats" id="mission">
-<h2 class="hero-title">--notre mission principale:</h2><br><br>
+<h2 class="hero-title">--Notre mission principale:</h2><br><br>
     <div class="wrap">
       <div class="stats-grid">
         <div class="stat-card"><span class="stat-label">notre engagement repose sur trois piliers fondamentaux:</span></div>
-        <div class="stat-card"><span class="stat-label">Soutient: Aider ceux qui ont le plus besoins.</span></div>
-        <div class="stat-card"><span class="stat-label">Espoir: Redonner le sourire et L'espoir aux demunis. </span></div>
-        <div class="stat-card"><span class="stat-label">Action: Mettre en place des initiatives concretes et solidaires.</span></div>
+        <div class="stat-card"><span class="stat-label"> Fournir une aide matérielle et/ou financière aux personnes en difficulté </span></div>
+        <div class="stat-card"><span class="stat-label"> Organiser des actions solidaires, humanitaires et sociales  </span></div>
+        <div class="stat-card"><span class="stat-label"> Encourager l’engagement civique et bénévole de la jeunesse. </span></div>
       </div>
     </div>
   </section>
@@ -633,15 +626,17 @@ Contactez-nous en cliquant sur le bouton ci-dessous pour découvrir les différe
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16v16H4z"/><path d="M22 6l-10 7L2 6"/></svg>
               <div><b>numero wave:</b><span>+221 77 118 31 04</span></div>
             </div>
-            </div>
           </div>
         </div>
         <form onsubmit="event.preventDefault(); this.reset(); document.getElementById('formMsg').style.display='block';">
           <p id="formMsg" style="display:none;font-size:0.85rem;color:#E3A73E;font-family:var(--font-mono);">Merci ! Votre message a bien été enregistré (démo).</p>
         </form>
       </div>
-    </div>
+      <div class="images">
+        <img src="logo2 usf.jpg">
+      </div>
   </section>
+    </div>
 </main>
 
 <footer>
